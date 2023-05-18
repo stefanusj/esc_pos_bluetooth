@@ -33,13 +33,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-/** FlutterBluetoothBasicPlugin */
-public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPermissionsResultListener {
+/** EscPosBluetoothPlugin */
+public class EscPosBluetoothPlugin implements MethodCallHandler, RequestPermissionsResultListener {
   private static final String TAG = "BluetoothBasicPlugin";
   private int id = 0;
   private ThreadPool threadPool;
   private static final int REQUEST_COARSE_LOCATION_PERMISSIONS = 1451;
-  private static final String NAMESPACE = "flutter_bluetooth_basic";
+  private static final String NAMESPACE = "esc_pos_bluetooth";
   private final Registrar registrar;
   private final Activity activity;
   private final MethodChannel channel;
@@ -51,11 +51,11 @@ public class FlutterBluetoothBasicPlugin implements MethodCallHandler, RequestPe
   private Result pendingResult;
 
   public static void registerWith(Registrar registrar) {
-    final FlutterBluetoothBasicPlugin instance = new FlutterBluetoothBasicPlugin(registrar);
+    final EscPosBluetoothPlugin instance = new EscPosBluetoothPlugin(registrar);
     registrar.addRequestPermissionsResultListener(instance);
   }
 
-  FlutterBluetoothBasicPlugin(Registrar r){
+  EscPosBluetoothPlugin(Registrar r){
     this.registrar = r;
     this.activity = r.activity();
     this.channel = new MethodChannel(registrar.messenger(), NAMESPACE + "/methods");
