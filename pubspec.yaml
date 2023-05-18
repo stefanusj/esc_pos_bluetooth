@@ -63,6 +63,6 @@ flutter:
     platforms:
       android:
         package: com.stefanusj.esc_pos_bluetooth
-        pluginClass: FlutterBluetoothBasicPlugin
+        pluginClass: EscPosBluetoothPlugin
       ios:
-        pluginClass: FlutterBluetoothBasicPlugin
+        pluginClass: EscPosBluetoothPlugin
