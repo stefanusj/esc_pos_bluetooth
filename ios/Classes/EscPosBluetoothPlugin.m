@@ -1,26 +1,26 @@
-#import "FlutterBluetoothBasicPlugin.h"
+#import "EscPosBluetoothPlugin.h"
 #import "ConnecterManager.h"
 
-@interface FlutterBluetoothBasicPlugin ()
+@interface EscPosBluetoothPlugin ()
 @property(nonatomic, retain) NSObject<FlutterPluginRegistrar> *registrar;
 @property(nonatomic, retain) FlutterMethodChannel *channel;
-@property(nonatomic, retain) BluetoothPrintStreamHandler *stateStreamHandler;
+@property(nonatomic, retain) EscPosBluetoothStreamHandler *stateStreamHandler;
 @property(nonatomic) NSMutableDictionary *scannedPeripherals;
 @end
 
-@implementation FlutterBluetoothBasicPlugin
+@implementation EscPosBluetoothPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
       methodChannelWithName:NAMESPACE @"/methods"
             binaryMessenger:[registrar messenger]];
   FlutterEventChannel* stateChannel = [FlutterEventChannel eventChannelWithName:NAMESPACE @"/state" binaryMessenger:[registrar messenger]];
-  FlutterBluetoothBasicPlugin* instance = [[FlutterBluetoothBasicPlugin alloc] init];
+  EscPosBluetoothPlugin* instance = [[EscPosBluetoothPlugin alloc] init];
 
   instance.channel = channel;
   instance.scannedPeripherals = [NSMutableDictionary new];
     
   // STATE
-  BluetoothPrintStreamHandler* stateStreamHandler = [[BluetoothPrintStreamHandler alloc] init];
+  EscPosBluetoothStreamHandler* stateStreamHandler = [[EscPosBluetoothStreamHandler alloc] init];
   [stateChannel setStreamHandler:stateStreamHandler];
   instance.stateStreamHandler = stateStreamHandler;
 
@@ -168,7 +168,7 @@
 
 @end
 
-@implementation BluetoothPrintStreamHandler
+@implementation EscPosBluetoothStreamHandler
 
 - (FlutterError*)onListenWithArguments:(id)arguments eventSink:(FlutterEventSink)eventSink {
   self.sink = eventSink;
