@@ -94,7 +94,6 @@ public class EscPosBluetoothPlugin implements FlutterPlugin, ActivityAware, Meth
     }
 
     final Map<String, Object> args = call.arguments();
-
     switch (call.method) {
       case "state":
         state(result);
@@ -181,7 +180,6 @@ public class EscPosBluetoothPlugin implements FlutterPlugin, ActivityAware, Meth
 
   private void startScan(MethodCall call, Result result) {
     Log.d(TAG, "start scan ");
-
     try {
       startScan();
       result.success(null);
@@ -218,7 +216,6 @@ public class EscPosBluetoothPlugin implements FlutterPlugin, ActivityAware, Meth
     BluetoothLeScanner scanner = mBluetoothAdapter.getBluetoothLeScanner();
     if (scanner == null)
       throw new IllegalStateException("getBluetoothLeScanner() is null. Is the Adapter on?");
-
     // 0:lowPower 1:balanced 2:lowLatency -1:opportunistic
     ScanSettings settings = new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build();
     scanner.startScan(null, settings, mScanCallback);
@@ -259,7 +256,6 @@ public class EscPosBluetoothPlugin implements FlutterPlugin, ActivityAware, Meth
    * Reconnect to recycle the last connected object to avoid memory leaks
    */
   private boolean disconnect() {
-
     if (DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id] != null && DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].mPort != null) {
       DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].reader.cancel();
       DeviceConnFactoryManager.getDeviceConnFactoryManagers()[id].mPort.closePort();
@@ -281,7 +277,6 @@ public class EscPosBluetoothPlugin implements FlutterPlugin, ActivityAware, Meth
   private void writeData(Result result, Map<String, Object> args) {
     if (args.containsKey("bytes")) {
       final ArrayList<Integer> bytes = (ArrayList<Integer>) args.get("bytes");
-
       threadPool = ThreadPool.getInstantiation();
       threadPool.addSerialTask(new Runnable() {
         @Override
