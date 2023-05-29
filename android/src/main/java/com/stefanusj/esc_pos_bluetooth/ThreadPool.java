@@ -3,8 +3,11 @@ package com.stefanusj.esc_pos_bluetooth;
 import android.util.Log;
 
 import java.util.ArrayDeque;
-import java.util.concurrent.*;
-
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class ThreadPool {
 
