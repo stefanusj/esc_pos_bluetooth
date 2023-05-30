@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   PrinterBluetoothManager printerManager = PrinterBluetoothManager();
-  TextEditingController controller = TextEditingController(text: '66:32:8B:D7:76:E2');
+  TextEditingController controller = TextEditingController(text: '86:67:7A:47:78:87');
 
   String message = '';
 
